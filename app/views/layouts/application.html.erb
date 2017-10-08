@@ -11,8 +11,37 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+	<% if notice %>
+	<script type="text/javascript">
+		Materialize.toast('<%= notice %>', 4000)
+	</script>
+	<% end %>
+	<% if alert %>
+	<script type="text/javascript">
+		Materialize.toast('<%= alert %>', 4000)
+	</script>
+	<% end %>
+
+	<% if user_signed_in? %>
+	<header id="main-header">
+		<div class="component">
+			<a href="/"><img src="/assets/1.png"></a>
+		</div>
+		<div class="component">
+
+		</div>
+		<div class="component">
+			<ul>
+				<li><i class="material-icons">explore</i></li>
+				<li><i class="material-icons">favorite_border</i></li>
+				<li><a href="/user/profile"><i class="material-icons">perm_identity</i></a></li>
+			</ul>
+		</div>
+	</header>
+	<% end %>
 
 	<%= yield %>
 
 </body>
+
 </html>

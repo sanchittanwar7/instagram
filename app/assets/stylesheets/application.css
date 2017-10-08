@@ -14,7 +14,8 @@
  *= require_self
  */
 body{
-	padding: 0px;	
+	padding: 0px;
+	margin: 0px;	
 	background-color: #fafafa;
 	margin: 0px;
 }
