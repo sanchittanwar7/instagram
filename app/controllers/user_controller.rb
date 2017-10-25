@@ -1,5 +1,10 @@
 class UserController < ApplicationController
+		autocomplete :user, :username
+
   def profile
+  	
+  	username = params["username"]
+  	@userdetail = User.find_by_username(username)
   	@posts = Post.where(user_id: current_user.id)
   end
   def remove_profile_pic

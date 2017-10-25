@@ -1,11 +1,11 @@
 <main id="profile-main">
 	<div id="profile-head">
 		<div id="profile-picture">
-			<%= image_tag current_user.profilepic.url || ProfilepicUploader.default_url %>
+			<%= image_tag @userdetail.profilepic.url || ProfilepicUploader.default_url %>
 		</div>
 		<div id="profile-details">
 			<span>
-				<%= current_user.username %>
+				<%= @userdetail.username %>
 			</span>&nbsp&nbsp&nbsp&nbsp
 			<%= link_to "Edit Profile", edit_user_registration_path, method: :GET, class: "waves-effect waves-light grey darken-2 btn" %>
 			&nbsp
