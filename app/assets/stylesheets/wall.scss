@@ -1,0 +1,28 @@
+#main-header{
+	display: flex;
+	background-color: white;
+	border-bottom: 2px solid #e0e0e0;
+	justify-content: space-around;
+	position: fixed;
+	height: 96px;
+	width: 100%;
+	.component{
+		width: 33%;
+		align-items: centre;
+		img{
+			display: block;
+			margin: auto;
+			width: 40%;
+		}
+		ul{
+		display: flex;
+			li{
+				margin-left: 10%;
+			}
+		}
+	}
+}
+#main-body{
+	padding-top: 84px;
+
+}

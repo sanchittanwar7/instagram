@@ -1,0 +1,44 @@
+<main id="profile-main">
+	<div id="profile-head">
+		<div id="profile-picture">
+			<%= image_tag current_user.profilepic.url || ProfilepicUploader.default_url %>
+		</div>
+		<div id="profile-details">
+			<span>
+				<%= current_user.username %>
+			</span>&nbsp&nbsp&nbsp&nbsp
+			<%= link_to "Edit Profile", edit_user_registration_path, method: :GET, class: "waves-effect waves-light grey darken-2 btn" %>
+			&nbsp
+			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light grey darken-2 btn modal-trigger" href="#modal1"><i class="material-icons">settings</i></a>
+
+			<!-- Modal Structure -->
+			<div id="modal1" class="modal"  style="width: 30%;">
+				<div class="modal-content">
+					<ul class="collection">
+						<li class="collection-item">Settings</li>
+						<li class="collection-item"><%= link_to "Sign Out",destroy_user_session_path,method: :delete %>
+						</li>
+						
+					</ul>
+				</div>
+				<!-- <div class="modal-footer">
+					<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+				</div> -->
+			</div>
+
+		</div>
+		
+	</div>
+	<div id="profile-body">
+		
+	</div>
+</main>
+<%= @posts.length %>
+
+<% @posts.each do |post| %>
+	<div>
+		<%= image_tag(post.image_url)  %>
+		<%= post.caption %>
+	</div>
+<% end %>

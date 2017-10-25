@@ -1,0 +1,19 @@
+#profile-main{
+	width: 70%;
+	margin: auto;
+	padding-top: 192px;
+	#profile-head{
+		display: flex;
+		#profile-picture{
+			width: 40%;
+			border-radius: 40px;
+		}
+		#profile-details{
+			width: 60%;
+			span{
+				font-size: 42px;
+			}
+		}
+
+	}
+}
