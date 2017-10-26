@@ -4,10 +4,14 @@
 	padding-top: 192px;
 	#profile-head{
 		display: flex;
-		#profile-picture{
+		div#profile-picture{
 			width: 40%;
-			border-radius: 40px;
+			img{
+				border-radius: 50%;
+				height: 200px;
+			}
 		}
+
 		#profile-details{
 			width: 60%;
 			span{
@@ -15,5 +19,40 @@
 			}
 		}
 
+	}
+}
+
+div.post{
+	margin-top: 5%;
+}
+div.card{
+	margin: auto;
+	width: 40vw;
+}
+
+
+@media only screen and (max-width: 500px) {
+	div#profile-main{
+		width: 100%;
+		margin: auto;
+		padding-top: 192px;
+	    div#profile-head{
+			
+			div#profile-picture{
+				width: 40%;
+				img{
+					border-radius: 50%;
+					height: 100px;
+				}
+			}
+
+			div#profile-details{
+				width: 60%;
+				span{
+					font-size: 20px;
+				}
+			}
+
+		}
 	}
 }
