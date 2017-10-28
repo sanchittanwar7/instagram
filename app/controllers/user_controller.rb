@@ -11,7 +11,7 @@ class UserController < ApplicationController
 
     end
     @users = User.all
-    @posts = Post.where(user_id: @userdetail.id)
+    @posts = Post.where(user_id: @userdetail.id).order('created_at desc')
     @followers = Follow.where(followee: @userdetail.id)
     @followees = Follow.where(follower: @userdetail.id)
   end

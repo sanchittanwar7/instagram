@@ -9,11 +9,14 @@
 			</span>&nbsp&nbsp&nbsp&nbsp
 			<% if(@userdetail.id == current_user.id) %>
 			<%= link_to "Edit Profile", edit_user_registration_path, method: :GET, class: "waves-effect waves-light btn" %>
-			&nbsp
-			<!-- Modal Trigger -->
+			<a class="waves-effect waves-light btn modal-trigger" href="#modal4">Upload</a>
+			<div id="modal4" class="modal modal-fixed-footer">
+				<div class="modal-content">
+					<h4>Upload something</h4>
+					<%= render :partial => "posts/form", :locals => {:post => Post.new} %>
+				</div>
+			</div>
 			<a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons">settings</i></a>
-
-			<!-- Modal Structure -->
 			<div id="modal1" class="modal"  style="width: 30%;">
 				<div class="modal-content">
 					<ul class="collection">
@@ -30,9 +33,7 @@
 			<% else %>
 			<%= link_to 'Follow',url_for(controller: 'follow', action: 'toggle', profile: @userdetail.id),class: "waves-effect waves-light btn", id: "follow-button", method: :post,remote: true %><br>
 			<% end %>
-
 			<% end %>
-
 			<br>
 			<div id="follow-info">
 				<div id="follower-count">
