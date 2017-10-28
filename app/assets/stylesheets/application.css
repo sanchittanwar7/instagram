@@ -19,3 +19,7 @@ body{
 	background-color: #fafafa;
 	margin: 0px;
 }
+
+#form{
+	display: flex;
+}

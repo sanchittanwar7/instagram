@@ -30,11 +30,16 @@
 		</div>
 		<div class="component">
 			<%=form_tag '/user/profile' do %>
-				<%= autocomplete_field_tag 'username', '', autocomplete_user_username_user_index_path, :size => 75 ,id:"searchTerm"%> 
-
-				<%= button_tag(type: "submit", class: "btn btn-default ") do %>
+			<div id="form">
+				<div>
+					<%= autocomplete_field_tag 'username', '', autocomplete_user_username_user_index_path, :size => 75 ,id:"searchTerm"%> 
+				</div>
+				<div>
+					<%= button_tag(type: "submit", class: "btn btn-default ") do %>
 					<i class="material-icons">search</i>
-				<% end %>
+					<% end %>
+				</div>
+			</div>
 			<%end%>
 		</div>
 		<div class="component">
@@ -43,9 +48,9 @@
 				<li><i class="material-icons">favorite_border</i></li>
 				<!-- <li><a href="/user/profile"><i class="material-icons">perm_identity</i></a></li> -->
 				<div>
-				<%= link_to user_profile_path(:username => current_user.username) do %>
+					<%= link_to user_profile_path(:username => current_user.username) do %>
 					<i class="material-icons">perm_identity</i>    
-				<% end %>
+					<% end %>
 				</div>
 
 				

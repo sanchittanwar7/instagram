@@ -13,6 +13,7 @@ class UserController < ApplicationController
     @users = User.all
     @posts = Post.where(user_id: @userdetail.id)
     @followers = Follow.where(followee: @userdetail.id)
+    @followees = Follow.where(follower: @userdetail.id)
   end
   def remove_profile_pic
     current_user.remove_profile_pic!

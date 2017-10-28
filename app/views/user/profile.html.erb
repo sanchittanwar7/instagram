@@ -23,9 +23,6 @@
 						
 					</ul>
 				</div>
-				<!-- <div class="modal-footer">
-					<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-				</div> -->
 			</div>
 			<% elsif %>
 			<% if Follow.where(follower: current_user.id, followee: @userdetail.id)[0] %>
@@ -39,47 +36,41 @@
 			<br>
 			<div id="follow-info">
 				<div id="follower-count">
-					<h5><%= Follow.where(followee: @userdetail.id).count %> Followers</h5>
-
-
-  <!-- Modal Trigger -->
-  <a class="modal-trigger" href="#modal2"><h5><%= Follow.where(followee: @userdetail.id).count %> Followers</h5>
-</a>
-
-  <!-- Modal Structure -->
-  <div id="modal2" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-    </div>
-  </div>
-
-
-
-
-
-
+					<a class="modal-trigger" href="#modal2"><h5><%= Follow.where(followee: @userdetail.id).count %> Followers</h5>
+					</a>
+					<div id="modal2" class="modal modal-fixed-footer">
+						<div class="modal-content">
+							<h4>Followers</h4>
+							<% @followers.each do |followers| %>
+							<div class="card" style="padding: 12px;">
+								<h5><%= @users.where(id: followers.follower).first.username %></h5>
+							</div>
+							<% end %>
+						</div>
+					</div>
 				</div>
-
 				<div>
-					<h5><%= Follow.where(follower: @userdetail.id).count %> Following</h5>
-
+					<a class="modal-trigger" href="#modal3"><h5><%= Follow.where(follower: @userdetail.id).count %> Following</h5>
+					</a>
+					<div id="modal3" class="modal modal-fixed-footer">
+						<div class="modal-content">
+							<h4>Following</h4>
+							<% @followees.each do |followees| %>
+							<div class="card" style="padding: 12px;">
+								<h5><%= @users.where(id: followees.followee).first.username %></h5>
+							</div>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-
 		</div>
-		
 	</div>
 	<div id="profile-body">
-		
 	</div>
 </main>
 <div class="post">
 	<% @posts.each do |post| %>
-
 	<div class="card" >
 		<div class="card-image waves-effect waves-block waves-light">
 			<div class="activator">
@@ -91,13 +82,13 @@
 				<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
 				<%= @userdetail.username %><i class="material-icons right">more_vert</i>
 			</span>
-				<h6><%= post.caption %></h6>
-			</div>
-			<div class="card-reveal">
-				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-				<p>Here is some more information about this product that is only revealed once clicked on.</p>
-			</div>
+			<h6><%= post.caption %></h6>
 		</div>
-		<br>
-		<% end %>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+			<p>Here is some more information about this product that is only revealed once clicked on.</p>
+		</div>
 	</div>
+	<br>
+	<% end %>
+</div>
