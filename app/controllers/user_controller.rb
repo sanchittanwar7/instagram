@@ -1,11 +1,16 @@
 class UserController < ApplicationController
-		autocomplete :user, :username
+  autocomplete :user, :username
 
   def profile
-  	
   	username = params["username"]
   	@userdetail = User.find_by_username(username)
-  	@posts = Post.where(user_id: current_user.id)
+
+    if @userdetail
+    else
+      redirect_to '/' and return
+
+    end
+    @posts = Post.where(user_id: @userdetail.id)
   end
   def remove_profile_pic
     current_user.remove_profile_pic!

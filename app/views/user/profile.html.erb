@@ -7,6 +7,7 @@
 			<span>
 				<%= @userdetail.username %>
 			</span>&nbsp&nbsp&nbsp&nbsp
+			<% if(@userdetail.id == current_user.id) %>
 			<%= link_to "Edit Profile", edit_user_registration_path, method: :GET, class: "waves-effect waves-light grey darken-2 btn" %>
 			&nbsp
 			<!-- Modal Trigger -->
@@ -26,6 +27,23 @@
 					<a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
 				</div> -->
 			</div>
+			<% elsif %>
+
+			<%= link_to 'Follow',url_for(controller: 'follow', action: 'toggle', profile: @userdetail.id),class: "waves-effect waves-light btn", id: "follow-button", method: :post,remote: true %><br>
+
+
+			<% end %>
+
+			<br>
+			<div id="follower-count">
+				<%= Follow.where(followee: @userdetail.id).count %> Followers
+			</div>
+
+			<div>
+								<%= Follow.where(follower: @userdetail.id).count %> Following
+
+			</div>
+
 
 		</div>
 		

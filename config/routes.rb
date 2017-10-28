@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :posts
   get 'user/profile'
   post 'user/profile'
+  post 'follow/toggle'
+  get '/follow/toggle'
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: 'home#index'
 
