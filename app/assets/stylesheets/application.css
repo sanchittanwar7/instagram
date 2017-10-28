@@ -20,6 +20,6 @@ body{
 	margin: 0px;
 }
 
-#form{
+.form{
 	display: flex;
 }

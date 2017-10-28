@@ -1,3 +1,5 @@
+
+
 <%= form_for(post, html: {:multipart => true}) do |f| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -28,7 +30,6 @@
     <%= f.submit %>
   </div>
 <% end %>
-
 
 
 

@@ -30,7 +30,7 @@
 		</div>
 		<div class="component">
 			<%=form_tag '/user/profile' do %>
-			<div id="form">
+			<div class="form">
 				<div>
 					<%= autocomplete_field_tag 'username', '', autocomplete_user_username_user_index_path, :size => 75 ,id:"searchTerm"%> 
 				</div>
