@@ -1,19 +1,22 @@
-
-<!-- <header id="main-header">
-	<div class="component">
-		<a href="/"><img src="/assets/1.png"></a>
-	</div>
-	<div class="component">
-		
-	</div>
-	<div class="component">
-			<ul>
-				<li><i class="material-icons">explore</i></li>
-				<li><i class="material-icons">favorite_border</i></li>
-				<li><a href="user/profile"><i class="material-icons">perm_identity</i></a></li>
-			</ul>
-	</div>
-</header> -->
-
-<main id="main-body">
-</main>
+<div id="index">
+<% @posts.each do |post| %>
+	<% if @follows.where(followee: post.user_id).first || post.user_id == current_user.id %>
+		<div class="card" >
+			<div class="card-image waves-effect waves-block waves-light">
+				<div class="activator">
+					<%= image_tag(post.image_url)  %>
+				</div>
+			</div>
+			<div class="card-content">
+				<span class="card-title activator grey-text text-darken-4"><%= post.user.username %><i class="material-icons right">more_vert</i></span>
+				<h6><%= post.caption %></h6>
+			</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+				<p>Here is some more information about this product that is only revealed once clicked on.</p>
+			</div>
+		</div>
+		<br>
+	<% end %>
+<% end %>
+</div>

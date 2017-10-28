@@ -28,9 +28,11 @@
 				</div> -->
 			</div>
 			<% elsif %>
-
+			<% if Follow.where(follower: current_user.id, followee: @userdetail.id)[0] %>
+			<%= link_to 'Following',url_for(controller: 'follow', action: 'toggle', profile: @userdetail.id),class: "waves-effect waves-light btn", id: "follow-button", method: :post,remote: true %><b
+			<% else %>
 			<%= link_to 'Follow',url_for(controller: 'follow', action: 'toggle', profile: @userdetail.id),class: "waves-effect waves-light btn", id: "follow-button", method: :post,remote: true %><br>
-
+			<% end %>
 
 			<% end %>
 
@@ -40,7 +42,7 @@
 			</div>
 
 			<div>
-								<%= Follow.where(follower: @userdetail.id).count %> Following
+				<%= Follow.where(follower: @userdetail.id).count %> Following
 
 			</div>
 
