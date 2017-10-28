@@ -10,7 +10,9 @@ class UserController < ApplicationController
       redirect_to '/' and return
 
     end
+    @users = User.all
     @posts = Post.where(user_id: @userdetail.id)
+    @followers = Follow.where(followee: @userdetail.id)
   end
   def remove_profile_pic
     current_user.remove_profile_pic!

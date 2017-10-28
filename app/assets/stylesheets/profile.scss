@@ -27,8 +27,23 @@ div.post{
 }
 div.card{
 	margin: auto;
-	width: 40vw;
+	width: 50vw;
 }
+#small-pic{
+	height: 40px;
+	border-radius: 50%;
+}
+#follow-info{
+	display: flex;
+	margin-top: 5vh;
+	div{
+		margin-right: 5vw;
+	}
+}
+
+	a.modal-trigger:hover{
+		color: black;
+	}
 
 
 @media only screen and (max-width: 500px) {

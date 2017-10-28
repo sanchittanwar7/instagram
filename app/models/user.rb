@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
  mount_uploader :profilepic, ProfilepicUploader
+
+
+ def get_username
+ 	username
+ end
 end
