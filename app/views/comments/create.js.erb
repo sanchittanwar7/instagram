@@ -1,2 +1,2 @@
-$("#comments").prepend("<%= escape_javascript (render 'comment', comment: @comment) %>");
+$("#comments_<%= @post.id %>").prepend("<%= escape_javascript (render 'comment', comment: @comment, post: @post) %>");
 $(".comment-form").val("");

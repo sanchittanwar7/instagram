@@ -90,7 +90,7 @@
 			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
 			<div id="comments">
 				<% @commentForThisPost.each do |comment| %>
-				<%= render 'comments/comment', comment: comment %>
+				<%= render 'comments/comment', comment: comment, post: post %>
 				<% end %>
 			</div>
 			<div id="comment-form">

@@ -1,3 +1,10 @@
-<div id="comment_<%= comment.id %>" class="comment">
+<div id="comment_<%= comment.id %>" class="comment"> 
 	<h6><b>@<%= comment.user.username %></b>  <%= comment.content %></h6>
+	<% @repliesForThisComment = Reply.where(comment_id: comment.id) %>
+	<% @repliesForThisComment.each do |reply| %>
+		<%= render 'replies/reply', reply: reply, comment: comment %>		
+	<% end %>
+	<div class="reply">
+		<%= render :partial => 'replies/form', :locals => {:post => post, :reply => Reply.new, :comment => comment} %>
+	</div>
 </div>

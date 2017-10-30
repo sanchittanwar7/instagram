@@ -1,33 +1,33 @@
 <div id="index">
-<% @posts.each do |post| %>
+	<% @posts.each do |post| %>
 	<% @commentForThisPost = @comments.where(post_id: post.id) %>
 	<% if @follows.where(followee: post.user_id).first || post.user_id == current_user.id %>
-		<div class="card" >
-			<div class="card-image waves-effect waves-block waves-light">
-				<div class="activator">
-					<%= image_tag(post.image_url)  %>
-				</div>
-			</div>
-			<div class="card-content">
-				<span class="card-title activator grey-text text-darken-4">	
-					<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
-					<%= post.user.username %><i class="material-icons right">more_vert</i>
-				</span>
-				<h6><%= post.caption %></h6>
-			</div>
-			<div class="card-reveal">
-				<span class="card-title grey-text text-darken-4">Comments<i class="material-icons right">close</i></span>
-				<div id="comments">
-					<% @commentForThisPost.each do |comment| %>
-						<%= render 'comments/comment', comment: comment %>
-					<% end %>
-				</div>
-				<div id="comment-form">
-				<%= render :partial => "comments/form", :locals => {:post => post, :comment => Comment.new} %>
-				</div>
+	<div class="card" >
+		<div class="card-image waves-effect waves-block waves-light">
+			<div class="activator">
+				<%= image_tag(post.image_url)  %>
 			</div>
 		</div>
-		<br>
+		<div class="card-content">
+			<span class="card-title activator grey-text text-darken-4">	
+				<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
+				<%= post.user.username %><i class="material-icons right">more_vert</i>
+			</span>
+			<h6><%= post.caption %></h6>
+		</div>
+		<div class="card-reveal">
+			<span class="card-title grey-text text-darken-4">Comments<i class="material-icons right">close</i></span>
+			<div id="comments_<%= post.id %>">
+				<% @commentForThisPost.each do |comment| %>
+				<%= render 'comments/comment', comment: comment, post: post %>
+				<% end %>
+			</div>
+			<div class="comment-form">
+				<%= render :partial => "comments/form", :locals => {:post => post, :comment => Comment.new} %>
+			</div>
+		</div>
+	</div>
+	<br>
 	<% end %>
-<% end %>
+	<% end %>
 </div>
