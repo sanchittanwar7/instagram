@@ -19,9 +19,8 @@
 				<span class="card-title grey-text text-darken-4">Comments<i class="material-icons right">close</i></span>
 				<div id="comments">
 					<% @commentForThisPost.each do |comment| %>
-							<h6><%= comment.content %></h6>
+						<%= render 'comments/comment', comment: comment %>
 					<% end %>
-					
 				</div>
 				<div id="comment-form">
 				<%= render :partial => "comments/form", :locals => {:post => post, :comment => Comment.new} %>
