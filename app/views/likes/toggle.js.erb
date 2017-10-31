@@ -1,0 +1,7 @@
+<% if @isLiked.eql?"true" %>
+$("#likes_<%= @post %>").html("<%= escape_javascript (render 'like', post: @post) %>");
+<% else %>
+$("#likes_<%= @post %>").html("<%= escape_javascript (render 'unlike', post: @post) %>");
+<% end %>
+
+$("#likes-count_<%= @post %>").html("<%= @count %> Likes");

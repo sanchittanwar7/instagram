@@ -5,5 +5,6 @@ class HomeController < ApplicationController
 		@follows = Follow.where(follower: current_user.id)
 		@comments = Comment.all.order('created_at desc')
 		@replies = Reply.all.order('created_at desc')
+		@likes = Like.all
 	end
 end

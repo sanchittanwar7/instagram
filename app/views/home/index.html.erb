@@ -9,6 +9,24 @@
 			</div>
 		</div>
 		<div class="card-content">
+			<div id="likes_<%= post.id %>">
+				<% if @likes.where(user_id: current_user.id, post_id: post.id)[0] %>
+					<%= link_to likes_toggle_path(:post => post, isLiked: "true"), remote: true do %>
+						<i class="small material-icons">favorite</i>    
+					<% end %>
+				<% else %>
+					<%= link_to likes_toggle_path(:post => post, isLiked: "false"), remote: true do %>
+						<i class=" small material-icons">favorite_border</i>    
+					<% end %>
+				<% end %>
+
+				
+				
+			</div>
+			<div id="likes-count_<%= post.id %>">
+					<%= Like.where(post_id: post.id).count %> Likes
+				</div>
+			<br>
 			<span class="card-title activator grey-text text-darken-4">	
 				<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
 				<%= post.user.username %><i class="material-icons right">more_vert</i>
