@@ -80,9 +80,32 @@
 			</div>
 		</div>
 		<div class="card-content">
+			<div style="display: flex;">
+				<div id="likes_<%= post.id %>">
+					<% if @likes.where(user_id: current_user.id, post_id: post.id)[0] %>
+					<%= link_to likes_toggle_path(:post => post, isLiked: "true"), remote: true do %>
+					<i class="small material-icons">favorite</i>    
+					<% end %>
+					<% else %>
+					<%= link_to likes_toggle_path(:post => post, isLiked: "false"), remote: true do %>
+					<i class=" small material-icons">favorite_border</i>    
+					<% end %>
+					<% end %>
+				</div>
+				<div class="card-title activator", style="margin-left: 5%;"><i class="material-icons right">chat_bubble_outline</i></div>
+			</div>
+			<div style="display: flex;">
+				<div id="likes-count_<%= post.id %>">
+					<%= Like.where(post_id: post.id).count %> Likes
+				</div>
+				<div id="comments-count_<%= post.id %>", style="margin-left: 5%;">
+					<%= @commentForThisPost.count %> Comments
+				</div>
+			</div>
+			<br>
 			<span class="card-title activator grey-text text-darken-4">	
 				<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
-				<%= @userdetail.username %><i class="material-icons right">more_vert</i>
+				<%= post.user.username %>
 			</span>
 			<h6><%= post.caption %></h6>
 		</div>

@@ -6,5 +6,6 @@ class HomeController < ApplicationController
 		@comments = Comment.all.order('created_at desc')
 		@replies = Reply.all.order('created_at desc')
 		@likes = Like.all
+		@users = User.all
 	end
 end

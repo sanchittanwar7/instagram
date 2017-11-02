@@ -15,10 +15,14 @@ class UserController < ApplicationController
     @followers = Follow.where(followee: @userdetail.id)
     @followees = Follow.where(follower: @userdetail.id)
     @comments = Comment.all.order('created_at desc')
+    @likes = Like.all
   end
+
   def remove_profile_pic
     current_user.remove_profile_pic!
     current_user.save
     redirect_to edit_user_registration_path
   end
+
+  
 end
