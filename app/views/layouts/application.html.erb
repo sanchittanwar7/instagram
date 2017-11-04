@@ -46,6 +46,11 @@
 			<ul>
 				<li><i class="material-icons">explore</i></li>
 				<li><i class="material-icons">favorite_border</i></li>
+				<div>
+					<%= link_to notifications_show_path(:username => current_user.username), remote: true do %>
+					<i class="material-icons">notifications_none</i>    
+					<% end %>
+				</div>
 				<!-- <li><a href="/user/profile"><i class="material-icons">perm_identity</i></a></li> -->
 				<div>
 					<%= link_to user_profile_path(:username => current_user.username) do %>
@@ -53,7 +58,7 @@
 					<% end %>
 				</div>
 
-				
+				<%= link_to "yo", notifications_check_path, id: "check", remote: true %>
 
 
 			</ul>
@@ -66,3 +71,9 @@
 </body>
 
 </html>
+
+<script type="text/javascript">
+	setInterval(function(){
+		$("#check").click();
+	},1000);
+</script>

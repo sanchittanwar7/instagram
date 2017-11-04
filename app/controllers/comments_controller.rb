@@ -28,6 +28,8 @@ class CommentsController < ApplicationController
     @post = @comment.post
     respond_to do |format|
       if @comment.save
+        
+        Notification.create(receiver_id: params[:comment][:user_id], actor_id: current_user.id, statement: "commented on your post", read: false, post_id: @post.id)
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
         format.js { @count = Comment.where(post_id: @post).count }

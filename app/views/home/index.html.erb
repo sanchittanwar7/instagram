@@ -56,7 +56,3 @@
 </div>
 
 
-<script> 
-  data = <%= raw @users.pluck(:username).compact.to_json %>;
-  $('textarea').atwho({at:"@", 'data':data}); 
-</script>

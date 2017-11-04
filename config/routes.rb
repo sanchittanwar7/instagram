@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/show'
+
   resources :replies
   resources :comments
   resources :posts
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   get '/follow/toggle'
   post 'likes/toggle'
   get '/likes/toggle'
+  get 'notifications/check'
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: 'home#index'
 

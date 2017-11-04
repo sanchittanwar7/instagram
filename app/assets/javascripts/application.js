@@ -17,3 +17,8 @@
 //= require autocomplete-rails
 //= require turbolinks
 //= require_tree .
+
+
+setInterval(function(){
+	$("#check").click();
+},1000);
