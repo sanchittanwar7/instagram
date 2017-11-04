@@ -1,2 +1,7 @@
-<h1>Notifications#show</h1>
-<p>Find me in app/views/notifications/show.html.erb</p>
+<div class="card notifications">
+	<% @notifications.each do |notification| %>
+		<div>
+			<%= notification.statement %>
+		</div>
+	<% end %>
+</div>

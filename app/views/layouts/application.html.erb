@@ -45,21 +45,18 @@
 		<div class="component">
 			<ul>
 				<li><i class="material-icons">explore</i></li>
-				<li><i class="material-icons">favorite_border</i></li>
-				<div>
-					<%= link_to notifications_show_path(:username => current_user.username), remote: true do %>
+				<div id="notifications">
+					<%= link_to notifications_show_path do %>
 					<i class="material-icons">notifications_none</i>    
 					<% end %>
 				</div>
-				<!-- <li><a href="/user/profile"><i class="material-icons">perm_identity</i></a></li> -->
 				<div>
 					<%= link_to user_profile_path(:username => current_user.username) do %>
 					<i class="material-icons">perm_identity</i>    
 					<% end %>
 				</div>
 
-				<%= link_to "yo", notifications_check_path, id: "check", remote: true %>
-
+				<%= button_to "Hello", notifications_check_path, :method => :get, :remote => true, id: "check" %>
 
 			</ul>
 		</div>
@@ -73,7 +70,6 @@
 </html>
 
 <script type="text/javascript">
-	setInterval(function(){
-		$("#check").click();
-	},1000);
+	
+	$("#check").hide();
 </script>
