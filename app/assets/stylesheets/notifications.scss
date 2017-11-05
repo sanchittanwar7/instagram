@@ -1,3 +1,16 @@
 // Place all the styles related to the notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.notifications{
+	padding-top : 156px;
+	width: 50%;
+	margin: auto;
+	div.card{
+		padding: 2%;
+	}
+}
+
+#small-post{
+	height: 40px;
+	width: 40px;
+}

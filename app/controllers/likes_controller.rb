@@ -13,8 +13,10 @@ class LikesController < ApplicationController
 			post = Post.where(id: @post)[0]
 			user = post.user_id
 
+			unless user == current_user.id
+							Notification.create(receiver_id: user, actor_id: current_user.id, statement: "likes your post", read: false, post_id: @post)
 
-			Notification.create(receiver_id: user, actor_id: current_user.id, statement: "likes your post", read: false, post_id: @post)
+			end
 			Like.create(user_id: current_user.id, post_id: @post)
 			@isLiked = "true"
 		end	
