@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'likes/toggle'
   get '/likes/toggle'
   get 'notifications/check'
+  get '/notifications/show_post'
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: 'home#index'
 

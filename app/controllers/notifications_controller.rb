@@ -2,6 +2,9 @@ class NotificationsController < ApplicationController
 	after_action :mark_read, only: [:show]
 	def show
 		@notifications = Notification.where(receiver_id: current_user.id).order('created_at desc')
+		@comments = Comment.all.order('created_at desc')
+		@replies = Reply.all.order('created_at desc')
+		@likes = Like.all
 	end
 
 	def check
@@ -10,6 +13,14 @@ class NotificationsController < ApplicationController
 			render :nothing => true, :status => :ok
 			return true
 		end
+	end
+
+	def show_post 
+		@comments = Comment.all.order('created_at desc')
+		@replies = Reply.all.order('created_at desc')
+		@likes = Like.all
+		@post = Post.where(id: params[:post])[0]
+		byebug
 	end
 
 	def mark_read

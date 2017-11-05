@@ -1,18 +1,25 @@
 <div class="notifications">
 	<% @notifications.each do |notification| %>
-	<% user = User.where(id: notification.actor_id)[0] %>
-	<div class="card" style="display: flex;" >
-		<div style="margin-right: 3%;">
-			<%= image_tag user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
-		</div>
-		<div style="width: 80%;">
-			
-			<h6 style="font-size: 20px;"><b><%= user.username %></b> <%= notification.statement %></h6>
-		</div>
-		<div>
-			<%= image_tag notification.post.image_url, id: 'small-post'  %>
+		<% user = User.where(id: notification.actor_id)[0] %>
+		<%= link_to notifications_show_post_path(post: notification.post) do %>
+			<div class="card" style="display: flex;" >
+				<div style="margin-right: 3%;">
+					<%= image_tag user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
+				</div>
+				<div style="width: 80%;">
+					
+					<h6 style="font-size: 20px;">
+						<%= link_to user_profile_path(:username => user.username) do %>
+						<%= user.username %>
+						<% end %>
+						<%= notification.statement %>
+					</h6>
+				</div>
+				<div>
+					<%= image_tag notification.post.image_url, id: 'small-post'  %>
 
-		</div>
-	</div>
+				</div>
+			</div>
+		<% end %>
 	<% end %>
 </div>

@@ -105,21 +105,22 @@
 			<br>
 			<span class="card-title activator grey-text text-darken-4">	
 				<%= image_tag post.user.profilepic.url || ProfilepicUploader.default_url, id: 'small-pic' %>
+				<%= link_to user_profile_path(:username => post.user.username) do %>
 				<%= post.user.username %>
-			</span>
-			<h6><%= post.caption %></h6>
-		</div>
-		<div class="card-reveal">
-			<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-			<div id="comments">
-				<% @commentForThisPost.each do |comment| %>
-				<%= render 'comments/comment', comment: comment, post: post %>
-				<% end %>
+				<% end %>			</span>
+				<h6><%= post.caption %></h6>
 			</div>
-			<div id="comment-form">
-				<%= render :partial => "comments/form", :locals => {:post => post, :comment => Comment.new} %>
-			</div>		</div>
+			<div class="card-reveal">
+				<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+				<div id="comments">
+					<% @commentForThisPost.each do |comment| %>
+					<%= render 'comments/comment', comment: comment, post: post %>
+					<% end %>
+				</div>
+				<div id="comment-form">
+					<%= render :partial => "comments/form", :locals => {:post => post, :comment => Comment.new} %>
+				</div>		</div>
+			</div>
+			<br>
+			<% end %>
 		</div>
-		<br>
-		<% end %>
-	</div>
